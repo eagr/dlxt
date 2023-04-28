@@ -1,0 +1,35 @@
+[package]
+publish = false
+name = "dlxt"
+version = "0.0.1"
+edition = "2021"
+description = "ergonomic download & extract"
+authors = ["Julian Eager <eagr@tutanota.com>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/eagr/dlxt"
+include = [
+    "src/**/*",
+    "README.md",
+    "LICENSE-*",
+]
+
+[features]
+default = ["tar", "bz2", "gz", "xz"]
+bz2 = ["bzip2"]
+gz = ["flate2"]
+xz = ["xz2"]
+tar-bz2 = ["tar", "bzip2"]
+tar-gz = ["tar", "gz"]
+tar-xz = ["tar", "xz"]
+
+[dependencies]
+anyhow = "1"
+curl = "0.4"
+lazy_static = "1.4"
+log = "0.4"
+regex = "1"
+bzip2 = {optional = true, version = "0.4"}
+flate2 = {optional = true, version = "1"}
+tar = {optional = true, version = "0.4"}
+xz2 = {optional = true, version = "0.1"}
